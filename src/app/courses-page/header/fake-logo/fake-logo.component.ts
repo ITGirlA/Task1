@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fake-logo.component.css']
 })
 export class FakeLogoComponent implements OnInit {
-
+  public logoText = 'Logo';
   constructor() { }
 
   ngOnInit() {
