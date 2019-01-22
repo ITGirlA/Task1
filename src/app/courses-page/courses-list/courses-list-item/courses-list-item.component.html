@@ -1,3 +1,22 @@
-<p>
-  {{coursesItem.title}}
-</p>
+<div class="courses-list__item">
+  <div class="video-item__content"> 
+    <div class="video-item__main"> 
+      <div class="video-title">
+          {{coursesItem.title}}
+      </div>
+      <div class="video-duration">
+        {{coursesItem.duration}}
+      </div>
+      <div class="video-creationDate"> 
+        {{coursesItem.creationDate}}
+      </div>
+    </div>
+    <div class="video-description">
+      {{coursesItem.description}}
+    </div>
+  </div>
+  <div class="video-item__buttons">
+    <button class="video-edit">Edit</button>
+    <button class="video-delete" (click)="deleteItem(coursesItem)">Delete</button>
+  </div>
+</div>

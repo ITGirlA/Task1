@@ -1,0 +1,26 @@
+.toolbox {
+    position: relative;
+    display: flex;
+    height: 30px;
+    background-color: white;
+    width: 100%;
+  }
+  
+  .search-tools{
+    position: relative;
+    display: flex;
+  }
+
+  .toolbox-input{
+    width: 500px;
+  }
+
+  .search {
+    margin-left:   18px ;
+  }
+
+  .add-course {
+    display: flex;
+    position:absolute;
+    right:0;
+  }

@@ -1,0 +1,12 @@
+.menu {
+    display: flex;
+    align-items: stretch;
+    position: fixed;
+    height: 30px;
+    top: 60px;
+    background-color: #D5D5D5;
+    width: 100%;
+    color: black;
+    padding: 2px;
+    z-index: 1;
+  }
