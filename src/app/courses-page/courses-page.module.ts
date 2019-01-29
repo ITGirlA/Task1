@@ -21,6 +21,6 @@ import { AddButtonComponent } from './toolbox/add-button/add-button.component';
     FormsModule,
     CommonModule
   ],
-  exports: [HeaderComponent, BreadcrumbsComponent,  CoursesListComponent ,  FooterComponent,ToolboxComponent,LoadMoreComponent]
+  exports: [HeaderComponent, BreadcrumbsComponent, ToolboxComponent, CoursesListComponent, FooterComponent, FakeLogoComponent, CoursesListItemComponent, UserLoginComponent, LogOffComponent, SearchFieldComponent, SearchButtonComponent, AddButtonComponent, LoadMoreComponent]
 })
 export class CoursesPageModule { }

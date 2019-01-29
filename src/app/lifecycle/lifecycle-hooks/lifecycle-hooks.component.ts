@@ -5,14 +5,14 @@ import { Component, OnInit, OnChanges, OnDestroy, DoCheck, AfterContentInit, Aft
   templateUrl: './lifecycle-hooks.component.html',
   styleUrls: ['./lifecycle-hooks.component.css']
 })
-export class LifecycleHooksComponent implements 
-  OnInit, OnChanges, OnDestroy, DoCheck, AfterContentInit, AfterContentChecked, AfterViewChecked, AfterViewInit {
+export class LifecycleHooksComponent /*implements 
+  OnInit, OnChanges, OnDestroy, DoCheck, AfterContentInit, AfterContentChecked, AfterViewChecked, AfterViewInit*/ {
 
 @Input() secondsLeft: number;
 constructor() { 
   console.log("Constructor");
 }
-
+/*
 ngOnChanges() {
   console.log("OnChanges");
 }
@@ -44,5 +44,6 @@ ngAfterViewChecked() {
 ngAfterViewInit() {
   console.log("AfterViewInit");
 }
+*/
 
 }
