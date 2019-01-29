@@ -9,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
       <button class="search" (click)="onSearch(searchText)">Search</button>
     </div>
     <div class="add-course">
-      <button >Add course</button>
+      <button>Add course</button>
     </div>
   </div>
 `,
