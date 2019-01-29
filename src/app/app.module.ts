@@ -12,8 +12,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     LifecycleComponent,
-    LifecycleHooksComponent,
-    CoursesPageModule
+    LifecycleHooksComponent
   ],
   imports: [
     BrowserModule,
