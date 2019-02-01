@@ -12,7 +12,7 @@ export class LoadMoreComponent implements OnInit {
   ngOnInit() {
   }
 
-  OnClick(){
+  loadMore() {
     console.log('Load more');
   }
 }

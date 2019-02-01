@@ -1,1 +1,9 @@
-
+<div class="toolbox">
+<div class="search-tools">
+    <input [(ngModel)]="searchText" class="toolbox-input" (keyup.enter)="onSearch(searchText)" >
+    <button class="search" (click)="onSearch(searchText)">Search</button>
+</div>
+<div class="add-course">
+    <button>Add course</button>
+</div>
+</div>

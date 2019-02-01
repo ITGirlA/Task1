@@ -4,7 +4,8 @@ import { AppComponent } from './app.component';
 import { CoursesPageModule } from './courses-page/courses-page.module';
 import { LifecycleComponent } from './lifecycle/lifecycle.component';
 import { LifecycleHooksComponent } from './lifecycle/lifecycle-hooks/lifecycle-hooks.component';
-import { AppRoutingModule }     from './app.routes';
+import { AppRoutingModule } from './app.routes';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,8 +16,9 @@ import { AppRoutingModule }     from './app.routes';
   ],
   imports: [
     BrowserModule,
-    CoursesPageModule, 
-    AppRoutingModule
+    CoursesPageModule,
+    AppRoutingModule,
+    FormsModule
    ],
   providers: [],
   bootstrap: [AppComponent]

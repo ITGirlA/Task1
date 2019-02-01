@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LifecycleHooksComponent } from './lifecycle-hooks.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('LifecycleHooksComponent', () => {
   let component: LifecycleHooksComponent;
@@ -8,7 +9,8 @@ describe('LifecycleHooksComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LifecycleHooksComponent ]
+      declarations: [ LifecycleHooksComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

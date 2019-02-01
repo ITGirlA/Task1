@@ -16,11 +16,15 @@ import { SearchButtonComponent } from './toolbox/search-button/search-button.com
 import { AddButtonComponent } from './toolbox/add-button/add-button.component';
 
 @NgModule({
-  declarations: [HeaderComponent, BreadcrumbsComponent, ToolboxComponent, CoursesListComponent, FooterComponent, FakeLogoComponent, CoursesListItemComponent, UserLoginComponent, LogOffComponent, SearchFieldComponent, SearchButtonComponent, AddButtonComponent, LoadMoreComponent],
+  declarations: [HeaderComponent, BreadcrumbsComponent, ToolboxComponent, CoursesListComponent, FooterComponent,
+    FakeLogoComponent, CoursesListItemComponent, UserLoginComponent, LogOffComponent, SearchFieldComponent,
+    SearchButtonComponent, AddButtonComponent, LoadMoreComponent],
   imports: [
     FormsModule,
     CommonModule
   ],
-  exports: [HeaderComponent, BreadcrumbsComponent,  CoursesListComponent ,  FooterComponent,ToolboxComponent,LoadMoreComponent]
+  exports: [HeaderComponent, BreadcrumbsComponent, ToolboxComponent, CoursesListComponent, FooterComponent,
+    FakeLogoComponent, CoursesListItemComponent, UserLoginComponent, LogOffComponent, SearchFieldComponent,
+    SearchButtonComponent, AddButtonComponent, LoadMoreComponent]
 })
 export class CoursesPageModule { }

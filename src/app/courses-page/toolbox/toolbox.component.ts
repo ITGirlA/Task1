@@ -2,22 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-toolbox',
-  template: `
-  <div class="toolbox">
-    <div class="search-tools">
-      <input [(ngModel)]="searchText" class="toolbox-input" (keyup.enter)="onSearch(searchText)" >
-      <button class="search" (click)="onSearch(searchText)">Search</button>
-    </div>
-    <div class="add-course">
-      <button >Add course</button>
-    </div>
-  </div>
-`,
+  templateUrl: './toolbox.component.html',
   styleUrls: ['./toolbox.component.css']
 })
 
 export class ToolboxComponent implements OnInit {
-  searchText : string ="****default text****";
+  searchText = '****default text****';
 
   constructor() { }
 

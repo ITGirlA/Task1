@@ -22,7 +22,7 @@ export class CoursesListItemComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log("OnDestroy");
+    console.log('OnDestroy');
   }
 
 }

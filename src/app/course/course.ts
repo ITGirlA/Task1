@@ -1,14 +1,14 @@
 import { ICourse } from './icourse';
 
 export class Course implements ICourse  {
-    id:number;
+    id: number;
     title: string;
     creationDate: Date;
     duration: number;
     description: string;
- 
-    constructor(id:number, title: string, creationDate: Date, duration: number, description: string) {
-        this.id= id;
+
+    constructor(id: number, title: string, creationDate: Date, duration: number, description: string) {
+        this.id = id;
         this.title = title;
         this.creationDate = creationDate;
         this.duration = duration;
