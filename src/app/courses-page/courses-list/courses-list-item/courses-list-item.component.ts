@@ -12,6 +12,8 @@ export class CoursesListItemComponent implements OnInit, OnDestroy {
   @Input() coursesItem: CoursesListItem;
   @Output() deleted = new  EventEmitter<CoursesListItem>();
 
+  public iconPath = 'assets/images/star.png';
+
   constructor() { }
 
   ngOnInit() {

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class BreadcrumbsComponent implements OnInit {
+  // tslint:disable-next-line:no-inferrable-types
   public title: string = 'Courses';
 
   constructor() { }

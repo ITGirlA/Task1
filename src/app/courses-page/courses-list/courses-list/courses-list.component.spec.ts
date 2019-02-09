@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CoursesListComponent } from './courses-list.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { OrderByDatePipe } from './order-by-date.pipe';
 
 
 describe('CoursesListComponent', () => {
@@ -10,7 +11,7 @@ describe('CoursesListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CoursesListComponent ],
+      declarations: [ CoursesListComponent, OrderByDatePipe ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();

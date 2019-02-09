@@ -7,7 +7,6 @@ import { LifecycleHooksComponent } from './lifecycle/lifecycle-hooks/lifecycle-h
 import { AppRoutingModule } from './app.routes';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +19,6 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule
    ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

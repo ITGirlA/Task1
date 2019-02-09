@@ -1,11 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CoursesListItemComponent } from './courses-list-item.component';
-
-
 import { CoursesListItem } from '../courses-list-item.model';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { DurationPipe } from './duration.pipe';
+import { ColorBorderDirective } from './color-border.directive';
 
 @Component({
   template: `
@@ -15,18 +14,19 @@ import { By } from '@angular/platform-browser';
 })
 
 class TestHostComponent {
- public item: CoursesListItem = {
-  id: 4,
-  title: 'Item #4',
-  creationDate: new Date(),
-  duration: '1h 30min',
-  description: 'Item #4'
-};
-public deletedItem: CoursesListItem ;
-public onDelete(deletedItem: CoursesListItem) { this.deletedItem = deletedItem; }
+  public item: CoursesListItem = {
+    id: 4,
+    title: 'Item #4',
+    creationDate:  new Date(),
+    duration: 90,
+    description: 'Item #4',
+    topRated: true
+  };
+
+  public deletedItem: CoursesListItem ;
+  public onDelete(deletedItem: CoursesListItem) { this.deletedItem = deletedItem; }
 
 }
-
 
 describe('CoursesListItemComponent', () => {
   let testHost: TestHostComponent;
@@ -34,7 +34,7 @@ describe('CoursesListItemComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ CoursesListItemComponent, TestHostComponent ]
+      declarations: [ CoursesListItemComponent, TestHostComponent, DurationPipe, ColorBorderDirective ]
     })
     .compileComponents();
   });
@@ -47,16 +47,21 @@ describe('CoursesListItemComponent', () => {
   it('should delete iteme like', () => {
     fixture.detectChanges();
 
-    const expectedDeletedItem = {
+    const expectedDeletedItem =  {
       id: 4,
       title: 'Item #4',
       creationDate:  new Date(),
-      duration: '1h 30min',
-      description: 'Item #4'
+      duration: 90,
+      description: 'Item #4',
+      topRated: true
     };
+
     const deleteButton = fixture.debugElement.query(By.css('.video-delete'));
     deleteButton.triggerEventHandler('click', null);
     testHost.item.creationDate = expectedDeletedItem.creationDate;
     expect(testHost.deletedItem).toEqual(expectedDeletedItem);
+
   });
 });
+
+

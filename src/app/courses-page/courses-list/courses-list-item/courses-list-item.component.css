@@ -6,6 +6,10 @@
     display: flex;
 }
 
+.courses-list__rated {
+  background-color: #aaaaaa;
+}
+
 .video-item__content {
   margin-right: 18px;
   display: flex;
@@ -19,8 +23,21 @@
 }
 
 .video-title{
-  width: calc(100vw - 425px);
+ /* width: calc(100vw - 425px);*/
   font-size: 1.5em;
+}
+
+.top-rated{
+
+}
+
+.top-rated__star{
+  width: 28px;
+  height: 28px;
+}
+
+.video-duration{
+  margin-right: 18px;
 }
 
 .video-duration{
@@ -48,7 +65,6 @@
 }
 
 .video-delete {
-
   margin-top: 9px;
   width: 80px;
 }

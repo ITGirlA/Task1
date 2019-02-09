@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'Task1';
+  searchText = '';
+
+  onSearched(text: string) {
+    this.searchText = text;
+  }
 }
