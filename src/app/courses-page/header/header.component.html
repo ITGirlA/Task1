@@ -4,7 +4,6 @@
     <div class="login" >
       <app-user-login></app-user-login>
     </div>
-    <app-log-off></app-log-off>
+    <app-log-off (isAuth)="onLogOff($event)"></app-log-off>
   </div>
-</div>
 

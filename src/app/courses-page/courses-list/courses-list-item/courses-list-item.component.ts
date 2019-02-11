@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { CoursesListItem } from '../courses-list-item.model';
+import { CoursesListItem } from '../course/course';
+// import { CoursesListItem } from '../courses-list-item.model';
 
 
 @Component({

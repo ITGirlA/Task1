@@ -10,7 +10,6 @@ import { CoursesListItemComponent } from './courses-list/courses-list-item/cours
 import { ToolboxComponent } from './toolbox/toolbox.component';
 import { UserLoginComponent } from './header/user-login/user-login.component';
 import { LogOffComponent } from './header/log-off/log-off.component';
-
 import { DurationPipe } from './courses-list/courses-list-item/duration.pipe';
 import { OrderByDatePipe } from './courses-list/courses-list/order-by-date.pipe';
 import { SearchFilterPipe } from './courses-list/courses-list/search-filter.pipe';
