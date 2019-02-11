@@ -1,16 +1,19 @@
 <app-header></app-header>
 
-<app-breadcrumbs></app-breadcrumbs>
-
-<div class="rng-content">
-  
-  <app-toolbox (searched)="onSearched($event)"></app-toolbox>
-
-  <div class="component">
-    <app-courses-list #coursesList [searchText]="searchText"></app-courses-list>
+<div>
+  <app-breadcrumbs></app-breadcrumbs>
+  <div class="rng-content">
+    <app-toolbox (searched)="onSearched($event)"></app-toolbox>
+    <div class="component">
+      <app-courses-list #coursesList [searchText]="searchText"></app-courses-list>
+    </div>
   </div>
-
 </div>
+
+<div>
+  <app-login-page></app-login-page>
+</div>
+
 
 <app-footer></app-footer>
 

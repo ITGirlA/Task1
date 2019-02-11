@@ -6,12 +6,15 @@ import { LifecycleComponent } from './lifecycle/lifecycle.component';
 import { LifecycleHooksComponent } from './lifecycle/lifecycle-hooks/lifecycle-hooks.component';
 import { AppRoutingModule } from './app.routes';
 import { FormsModule } from '@angular/forms';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { AuthService } from './courses-page/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LifecycleComponent,
-    LifecycleHooksComponent
+    LifecycleHooksComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule
    ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [AuthService]
 })
 export class AppModule { }

@@ -8,6 +8,7 @@ import { User } from '../user/user';
 
 export class AuthService {
 
+  isAuth: boolean = false;
   constructor() { }
 
   private userInfo: User = {
@@ -18,10 +19,12 @@ export class AuthService {
 
   login() {
     // stores fake user info and token to local storage
+    console.log('logged in successfully');
   }
 
   logout() {
     this.userInfo = null;
+    console.log('logout()');
   }
 
   isAuthenticated(): boolean {

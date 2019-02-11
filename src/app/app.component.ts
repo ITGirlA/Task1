@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './courses-page/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ export class AppComponent {
   title = 'Task1';
   searchText = '';
 
+  constructor(private dataService: AuthService) {}
   onSearched(text: string) {
     this.searchText = text;
   }
