@@ -8,7 +8,6 @@ import { User } from '../user/user';
 
 export class AuthService {
 
-  isAuth: boolean = false;
   constructor() { }
 
   private userInfo: User = {

@@ -1,0 +1,29 @@
+
+<div class = 'add-course'>
+  <div class = 'title'>
+    <p>Title:</p>
+    <input type="text" ng-model="CoursesListItem.title">
+  </div>
+  <div class = 'description'>
+    <p>Description:</p>
+    <input type="text" ng-model="CoursesListItem.description">
+  </div>
+  <div class = 'creation-date'>
+    <p>Date:</p>
+    <input type="text" ng-model="CoursesListItem.creationDate">
+  </div>
+  <div class = 'duration'>
+    <p>Duration:</p>
+    <input type="text" ng-model="CoursesListItem.duration">
+    <p>{{coursesItem.duration | duration}}</p>
+  </div>
+  <div class = 'authors'>
+    <p>Authors:</p>
+    <input type="text" ng-model="CoursesListItem.authors">
+  </div>
+  <div class = 'butttons-block'>
+    <input type="submit" class="button-delete">
+    <input type="submit" class="button-cancel">
+  </div>
+</div>
+

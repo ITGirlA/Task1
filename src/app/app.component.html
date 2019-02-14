@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<div>
+<div *ngIf = 'isAuth && !isAddEditPage'>
   <app-breadcrumbs></app-breadcrumbs>
   <div class="rng-content">
     <app-toolbox (searched)="onSearched($event)"></app-toolbox>
@@ -10,7 +10,11 @@
   </div>
 </div>
 
-<div>
+<div *ngIf = 'isAuth && isAddEditPage'>
+  <app-add-course-page></app-add-course-page>
+</div>
+
+<div *ngIf = '!isAuth'>
   <app-login-page></app-login-page>
 </div>
 

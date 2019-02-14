@@ -1,4 +1,4 @@
-  <div appColorBorder={{coursesItem.creationDate}} [ngClass] = "'courses-list__item courses-list__rated'">
+  <div appColorBorder={{coursesItem.creationDate}} [ngClass] = "{'courses-list__item':true, 'courses-list__rated':coursesItem.topRated}">
     <div class="video-item__content"> 
       <div class="video-item__main"> 
         <div class="video-title">

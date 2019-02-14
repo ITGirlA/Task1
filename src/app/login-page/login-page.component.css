@@ -1,0 +1,70 @@
+.courses-list__item {
+    margin: 18px 0;
+    background-color: white;
+    border: 2px solid #D5D5D5;
+    padding: 18px;
+    display: flex;
+}
+
+.courses-list__rated {
+  background-color: #aaaaaa;
+}
+
+.video-item__content {
+  margin-right: 18px;
+  display: flex;
+  flex-direction: column;
+  width: calc(100vw - 220px);
+}
+
+.video-item__main{
+  display: flex;
+  margin-bottom: 18px;
+}
+
+.video-title{
+ /* width: calc(100vw - 425px);*/
+  font-size: 1.5em;
+}
+
+.top-rated{
+
+}
+
+.top-rated__star{
+  width: 28px;
+  height: 28px;
+}
+
+.video-duration{
+  margin-right: 18px;
+}
+
+.video-duration{
+  margin-left: 18px;
+  width: 80px;
+}
+
+.video-creationDate{
+  margin-left: 18px;
+  width: 120px;
+}
+
+.video-item__buttons {
+  margin: 0 18px;
+  display: flex;
+  flex-direction: column;
+  width: 116px;
+  position: absolute;
+  right: 0;
+}
+
+.video-edit {
+  margin-bottom: 9px;
+  width: 80px;
+}
+
+.video-delete {
+  margin-top: 9px;
+  width: 80px;
+}

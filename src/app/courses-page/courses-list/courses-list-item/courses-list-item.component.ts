@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { CoursesListItem } from '../course/course';
 // import { CoursesListItem } from '../courses-list-item.model';
 
@@ -6,7 +6,8 @@ import { CoursesListItem } from '../course/course';
 @Component({
   selector: 'app-courses-list-item',
   templateUrl: './courses-list-item.component.html',
-  styleUrls: ['./courses-list-item.component.css']
+  styleUrls: ['./courses-list-item.component.css'] ,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CoursesListItemComponent implements OnInit, OnDestroy {
 
