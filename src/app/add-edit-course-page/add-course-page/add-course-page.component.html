@@ -1,29 +1,29 @@
-
 <div class = 'add-course'>
-  <div class = 'title'>
-    <p>Title:</p>
-    <input type="text" ng-model="CoursesListItem.title">
+  <div class = 'info-block'>
+    <label for="title">Title:</label>
+    <input type="text" id ="title" ng-model="courseItem.title" value={{courseItem.title}}>
   </div>
-  <div class = 'description'>
-    <p>Description:</p>
-    <input type="text" ng-model="CoursesListItem.description">
+
+  <div class = 'info-block'>
+    <label>Description:</label>
+    <textarea type="text" ng-model="courseItem.description" value={{courseItem.description}} cols="100" rows="5"></textarea>
   </div>
-  <div class = 'creation-date'>
-    <p>Date:</p>
-    <input type="text" ng-model="CoursesListItem.creationDate">
+
+  <div class = 'info-blocke'>
+    <app-creation-date [creationDate] = "courseItem.creationDate | date: 'yyyy-MM-dd'"></app-creation-date>
   </div>
-  <div class = 'duration'>
-    <p>Duration:</p>
-    <input type="text" ng-model="CoursesListItem.duration">
-    <p>{{coursesItem.duration | duration}}</p>
+
+  <div class = 'info-block one-line'>
+    <app-duration [courseDuration] = "courseItem.duration"></app-duration>
   </div>
-  <div class = 'authors'>
-    <p>Authors:</p>
-    <input type="text" ng-model="CoursesListItem.authors">
+
+  <div class = 'info-block'>
+    <app-authors></app-authors>
   </div>
-  <div class = 'butttons-block'>
-    <input type="submit" class="button-delete">
-    <input type="submit" class="button-cancel">
+
+  <div class = 'info-block one-line'>
+    <app-buttons-block (save) ="onSave($event)" (cancel) ="onCancel($event)"></app-buttons-block>
   </div>
+
 </div>
 
