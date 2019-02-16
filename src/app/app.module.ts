@@ -30,13 +30,13 @@ import { ButtonsBlockComponent } from './add-edit-course-page/add-course-page/bu
     BrowserModule,
     CoursesPageModule,
     AppRoutingModule,
-    FormsModule,
-    AddCoursePageComponent,
+    FormsModule
+   ],
+   exports: [AddCoursePageComponent,
     CreationDateComponent,
     DurationComponent,
     AuthorsComponent,
-    ButtonsBlockComponent
-   ],
+    ButtonsBlockComponent],
   bootstrap: [AppComponent],
   providers: [AuthService]
 })
