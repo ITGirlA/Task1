@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { User } from '../user/user';
-import { build$ } from 'protractor/built/element';
 
 @Injectable({
   providedIn: 'root'
@@ -10,25 +9,42 @@ export class AuthService {
 
   constructor() { }
 
-  private userInfo: User;
+  private isAuth = false;
 
-  login() {
-    // stores fake user info and token to local storage
-    console.log('logged in successfully');
+  private data: User[] = [
+    {
+      id: 1,
+      firstName: 'John',
+      lastName: 'Snow',
+      email: 'John_Snow@epam.com',
+      password: 'Know nothing'
+    },
+    {
+      id: 2,
+      firstName: 'Hodor',
+      lastName: 'Hodor',
+      email: 'Hodor',
+      password: 'Hodor'
+    }
+  ];
+
+  login(email: string, password: string): boolean {
+    const userInfo = this.data.find(x => x.email === email && x.password === password);
+    localStorage.setItem('user-email', userInfo.email);
+    return userInfo !== undefined;
   }
 
   logout() {
-    this.userInfo = null;
-    console.log('logout()');
+    localStorage.removeItem('user-email');
   }
 
   isAuthenticated(): boolean {
-    return true;
+    const userInfo = localStorage.getItem('user-email');
+    return userInfo !== undefined;
   }
 
-  getUserInfo (): User {
-    // returns user login
-    return new User(1, 'Name', 'LName', '', '');
+  getUserInfo (): string {
+    return this.data.find(x => x.email === localStorage.getItem('user-email')).email;
   }
 
 }

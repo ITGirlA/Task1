@@ -10,3 +10,10 @@
     padding: 2px;
     z-index: 1;
   }
+
+  .text-link {
+    text-decoration: underline;
+    color: cornflowerblue;
+    cursor: pointer;
+  }
+  

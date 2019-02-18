@@ -5,10 +5,9 @@ import { NoContentComponent } from './no-content/no-content/no-content.component
 import { AddCoursePageComponent } from './add-edit-course-page/add-course-page/add-course-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 
-const routes: Routes = [
+export const routes: Routes = [
     { path: 'courses', component: CoursesListComponent },
     { path: '', redirectTo: '/courses', pathMatch: 'full' },
-
     { path: 'courses/:id', component: AddCoursePageComponent },
     { path: 'courses/new', component: AddCoursePageComponent },
     { path: 'log', component: LoginPageComponent },

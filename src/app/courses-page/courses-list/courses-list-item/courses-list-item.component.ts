@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { CoursesListItem } from '../course/course';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses-list-item',
@@ -14,13 +15,17 @@ export class CoursesListItemComponent implements OnInit, OnDestroy {
 
   public iconPath = 'assets/images/star.png';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   deleteItem(item: CoursesListItem) {
     this.deleted.emit(item);
+  }
+
+  editItem(item: CoursesListItem) {
+    this.router.navigate(['courses', item.id]);
   }
 
   ngOnDestroy() {

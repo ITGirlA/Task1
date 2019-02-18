@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './courses-page/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,17 +7,11 @@ import { AuthService } from './courses-page/auth.service';
 })
 
 export class AppComponent implements OnInit {
-  title = 'Task1';
 
-
-  isAuth: boolean;
-  isAddEditPage = false;
-
-  constructor(private dataService: AuthService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.isAuth = this.dataService.isAuthenticated();
-  }
 
+  }
 
 }

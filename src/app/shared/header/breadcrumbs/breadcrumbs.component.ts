@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, RouterEvent } from '@angular/router';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -8,11 +9,15 @@ import { Component, OnInit } from '@angular/core';
 
 export class BreadcrumbsComponent implements OnInit {
   // tslint:disable-next-line:no-inferrable-types
-  public title: string = 'Courses';
+  public mainPage: string = 'Courses';
+  public coursePage: string;
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute ) {  }
 
   ngOnInit() {
+    this.route.params.subscribe((data) => {
+      this.coursePage = data['id'];
+    });
   }
 
 }

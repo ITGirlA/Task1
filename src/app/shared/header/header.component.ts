@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor(private dataService: AuthService) { }
 
   ngOnInit() {
-    this.userInfo = this.dataService.getUserInfo();
+    // this.userInfo = this.dataService.getUserInfo();
   }
 
   onLogOff(isAuth: boolean) {
