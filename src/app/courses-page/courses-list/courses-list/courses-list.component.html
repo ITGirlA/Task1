@@ -2,7 +2,6 @@
 <div class="rng-content">
   <app-toolbox (searched)="onSearched($event)"></app-toolbox>
   <div class="component">
-    <!--<app-courses-list #coursesList [searchText]="searchText"></app-courses-list>-->
     
     <app-courses-list-item *ngFor="let item of coursesItems | orderByDate: 'creationDate'" [coursesItem]="item" (deleted)="onDelete($event)"></app-courses-list-item>
   
@@ -11,8 +10,6 @@
     </div>
     
     <app-load-more *ngIf = '!noCoursesItems'></app-load-more>
-
-
   </div>
 </div>
 

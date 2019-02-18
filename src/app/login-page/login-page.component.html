@@ -1,12 +1,18 @@
 <div class = 'login-block'>
   <div class = 'login-title'>
-    Login
+    <p>Login</p>
   </div>
   <div class = 'login-body'>
-    <p>Email: *Required</p>
-    <input type="text" ng-model="searchUser.yourName">
-    <p>Password: *Required</p>
-    <input type="text" ng-model="searchUser.yourPass"><br>
-    <input type="submit" class="button">
+    <div class = 'info-block'>
+      <p>Email: *Required</p>
+      <input type="text" [(ngModel)]="user.email" >
+    </div>
+    <div class = 'info-block'>
+        <p>Password: *Required</p>
+        <input type="text" [(ngModel)]="user.password">
+    </div>
+    <div class = 'info-block'>
+       <button class="submit" (click)="login()">Login</button>
+    </div>
   </div>
 </div>

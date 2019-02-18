@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../user/user';
-// import { CoursesListItem } from './courses-list/course/course';
+import { build$ } from 'protractor/built/element';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +10,7 @@ export class AuthService {
 
   constructor() { }
 
-  private userInfo: User = {
-        id: 1,
-        firstName: 'FirstName',
-        lastName: 'LastName'
-      };
+  private userInfo: User;
 
   login() {
     // stores fake user info and token to local storage
@@ -32,7 +28,7 @@ export class AuthService {
 
   getUserInfo (): User {
     // returns user login
-    return new User(1, 'Name', 'LName');
+    return new User(1, 'Name', 'LName', '', '');
   }
 
 }

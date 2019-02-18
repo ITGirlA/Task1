@@ -1,5 +1,5 @@
 <label for="duration">Duration:</label>
 <div>
-  <input  class = 'tight' type="text" id ="duration" ng-model="courseDuration" value={{courseDuration}}>
+  <input  class = 'tight' type="text" id ="duration" [ngModel]="courseDuration">
   <span>{{courseDuration | duration}}</span>
 </div>

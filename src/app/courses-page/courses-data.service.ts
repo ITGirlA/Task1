@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CoursesListItem } from './courses-list/course/course';
-// import { CoursesListItem } from './courses-list/courses-list-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -65,13 +64,13 @@ export class CoursesDataService {
   }
 
   updateItem(newItem: CoursesListItem) {
-    let updateItem = this.data.find(x => x.id === newItem.id);
-    let index = this.data.indexOf(updateItem);
+    const updateItem = this.data.find(x => x.id === newItem.id);
+    const index = this.data.indexOf(updateItem);
     this.data[index] = newItem;
   }
 
   removeItem(deleteItem: CoursesListItem) {
-    let index = this.data.indexOf(deleteItem);
+    const index = this.data.indexOf(deleteItem);
     this.data.splice(index, 1);
   }
 }

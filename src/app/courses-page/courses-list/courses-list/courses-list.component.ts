@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-// import { CoursesListItem } from '../courses-list-item.model';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { CoursesDataService } from '../../courses-data.service';
 import { CoursesListItem } from '../course/course';
@@ -11,8 +10,7 @@ import { CoursesListItem } from '../course/course';
   providers: [CoursesDataService , SearchFilterPipe]
 })
 
-export class CoursesListComponent implements OnInit, OnChanges {
-  @Input() searchText: string;
+export class CoursesListComponent implements OnInit {
   public coursesItems: CoursesListItem[];
   public coursesItemsNoFilter: CoursesListItem[];
 
@@ -24,12 +22,6 @@ export class CoursesListComponent implements OnInit, OnChanges {
     this.coursesItemsNoFilter = this.coursesDataService.getItems();
     this.coursesItems = this.coursesItemsNoFilter;
     this.checkCoursesCount();
-  }
-
-  ngOnChanges() {
-    if (this.coursesItems) {
-      this.coursesItems = this.searchFilter.transform(this.coursesItemsNoFilter, this.searchText);
-    }
   }
 
   onDelete(item: CoursesListItem) {
@@ -44,4 +36,9 @@ export class CoursesListComponent implements OnInit, OnChanges {
     this.noCoursesItems = this.coursesItems.length === 0;
   }
 
+  onSearched(text: string) {
+    if (this.coursesItems) {
+      this.coursesItems = this.searchFilter.transform(this.coursesItemsNoFilter, text);
+    }
+  }
 }

@@ -7,7 +7,7 @@ import { LifecycleHooksComponent } from './lifecycle/lifecycle-hooks/lifecycle-h
 import { AppRoutingModule } from './app.routes';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { AuthService } from './courses-page/auth.service';
+
 import { AddCoursePageComponent } from './add-edit-course-page/add-course-page/add-course-page.component';
 import { CreationDateComponent } from './add-edit-course-page/add-course-page/creation-date/creation-date.component';
 import { DurationComponent } from './add-edit-course-page/add-course-page/duration/duration.component';
@@ -15,6 +15,7 @@ import { AuthorsComponent } from './add-edit-course-page/add-course-page/authors
 import { ButtonsBlockComponent } from './add-edit-course-page/add-course-page/buttons-block/buttons-block.component';
 import { SharedModule } from './shared/shared.module';
 import { NoContentComponent } from './no-content/no-content/no-content.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +42,6 @@ import { NoContentComponent } from './no-content/no-content/no-content.component
     DurationComponent,
     AuthorsComponent,
     ButtonsBlockComponent],
-  bootstrap: [AppComponent],
-  providers: [AuthService]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

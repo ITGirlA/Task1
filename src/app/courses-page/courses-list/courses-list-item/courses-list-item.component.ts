@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { CoursesListItem } from '../course/course';
-// import { CoursesListItem } from '../courses-list-item.model';
-
 
 @Component({
   selector: 'app-courses-list-item',
