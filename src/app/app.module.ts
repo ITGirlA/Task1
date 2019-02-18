@@ -13,6 +13,8 @@ import { CreationDateComponent } from './add-edit-course-page/add-course-page/cr
 import { DurationComponent } from './add-edit-course-page/add-course-page/duration/duration.component';
 import { AuthorsComponent } from './add-edit-course-page/add-course-page/authors/authors.component';
 import { ButtonsBlockComponent } from './add-edit-course-page/add-course-page/buttons-block/buttons-block.component';
+import { SharedModule } from './shared/shared.module';
+import { NoContentComponent } from './no-content/no-content/no-content.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +26,13 @@ import { ButtonsBlockComponent } from './add-edit-course-page/add-course-page/bu
     CreationDateComponent,
     DurationComponent,
     AuthorsComponent,
-    ButtonsBlockComponent
+    ButtonsBlockComponent,
+    NoContentComponent
   ],
   imports: [
     BrowserModule,
     CoursesPageModule,
+    SharedModule,
     AppRoutingModule,
     FormsModule
    ],

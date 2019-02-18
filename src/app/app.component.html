@@ -1,13 +1,7 @@
 <app-header></app-header>
-
+<!--
 <div *ngIf = 'isAuth && !isAddEditPage'>
-  <app-breadcrumbs></app-breadcrumbs>
-  <div class="rng-content">
-    <app-toolbox (searched)="onSearched($event)"></app-toolbox>
-    <div class="component">
-      <app-courses-list #coursesList [searchText]="searchText"></app-courses-list>
-    </div>
-  </div>
+  <app-courses-list ></app-courses-list>
 </div>
 
 <div *ngIf = 'isAuth && isAddEditPage'>
@@ -17,8 +11,8 @@
 <div *ngIf = '!isAuth'>
   <app-login-page></app-login-page>
 </div>
-
-
+-->
+<router-outlet></router-outlet>
 <app-footer></app-footer>
 
 <app-lifecycle></app-lifecycle>

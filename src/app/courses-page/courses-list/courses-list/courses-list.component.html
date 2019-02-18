@@ -1,7 +1,21 @@
-<app-courses-list-item *ngFor="let item of coursesItems | orderByDate: 'creationDate'" [coursesItem]="item" (deleted)="onDelete($event)"></app-courses-list-item>
+<app-breadcrumbs></app-breadcrumbs>
+<div class="rng-content">
+  <app-toolbox (searched)="onSearched($event)"></app-toolbox>
+  <div class="component">
+    <!--<app-courses-list #coursesList [searchText]="searchText"></app-courses-list>-->
+    
+    <app-courses-list-item *ngFor="let item of coursesItems | orderByDate: 'creationDate'" [coursesItem]="item" (deleted)="onDelete($event)"></app-courses-list-item>
   
-<div *ngIf = 'noCoursesItems' class="no-data-message">
-    NO DATA, FEEL FREE TO ADD NEW COURSE
+    <div *ngIf = 'noCoursesItems' class="no-data-message">
+        NO DATA, FEEL FREE TO ADD NEW COURSE
+    </div>
+    
+    <app-load-more *ngIf = '!noCoursesItems'></app-load-more>
+
+
+  </div>
 </div>
 
-<app-load-more *ngIf = '!noCoursesItems'></app-load-more>
+
+
+

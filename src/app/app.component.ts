@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   searchText = '';
 
   isAuth: boolean;
-  isAddEditPage = true;
+  isAddEditPage = false;
 
   constructor(private dataService: AuthService) {}
 
