@@ -31,7 +31,7 @@ export class AuthService {
   login(email: string, password: string): boolean {
     const userInfo = this.data.find(x => x.email === email && x.password === password);
     localStorage.setItem('user-email', userInfo.email);
-    return userInfo !== undefined;
+    return userInfo !== null;
   }
 
   logout() {
@@ -40,7 +40,7 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     const userInfo = localStorage.getItem('user-email');
-    return userInfo !== undefined;
+    return userInfo !== null;
   }
 
   getUserInfo (): string {
