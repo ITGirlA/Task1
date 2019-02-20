@@ -3,7 +3,8 @@ import { CoursesListComponent } from './courses-page/courses-list/courses-list/c
 import { NoContentComponent } from './no-content/no-content/no-content.component';
 import { AddCoursePageComponent } from './add-edit-course-page/add-course-page/add-course-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './auth.guard';
+
 
 export const routes: Routes = [
     { path: '', redirectTo: '/courses', pathMatch: 'full' , canActivate: [AuthGuard]},
