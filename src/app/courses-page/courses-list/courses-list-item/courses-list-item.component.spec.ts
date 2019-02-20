@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CoursesListItemComponent } from './courses-list-item.component';
-// import { CoursesListItem } from '../courses-list-item.model';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { DurationPipe } from './duration.pipe';
 import { ColorBorderDirective } from './color-border.directive';
-import { CoursesListItem } from '../course/course';
+import { CoursesListItem } from 'src/app/models/course/course';
+
 
 @Component({
   template: `

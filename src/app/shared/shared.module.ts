@@ -6,17 +6,18 @@ import { HeaderComponent } from './header/header.component';
 import { FakeLogoComponent } from './header/fake-logo/fake-logo.component';
 import { UserLoginComponent } from './header/user-login/user-login.component';
 import { LogOffComponent } from './header/log-off/log-off.component';
-import { BreadcrumbsComponent } from './header/breadcrumbs/breadcrumbs.component';
+
 import { RouterModule } from '@angular/router';
 import { routes } from '../app.routes';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 
 @NgModule({
   declarations: [FooterComponent, HeaderComponent, FakeLogoComponent, UserLoginComponent, LogOffComponent,
     BreadcrumbsComponent],
   imports: [
-    FormsModule,
     CommonModule,
-    RouterModule.forRoot(routes, { useHash: true })
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   exports: [ FooterComponent, HeaderComponent, FakeLogoComponent, UserLoginComponent, LogOffComponent,
     BreadcrumbsComponent]

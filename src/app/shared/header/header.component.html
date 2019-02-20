@@ -2,10 +2,10 @@
   <app-fake-logo></app-fake-logo>
   <div class="log">
     <div class="login" >
-      <app-user-login></app-user-login>
+      <app-user-login [userLogin]="userLogin"></app-user-login>
     </div>
-    <app-log-off (isAuth)="onLogOff($event)"></app-log-off>
+    <app-log-off (loggedOut)="onLogOff($event)"></app-log-off>
   </div>
 </div>
-<app-breadcrumbs></app-breadcrumbs>
+
 

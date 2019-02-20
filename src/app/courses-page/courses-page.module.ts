@@ -12,12 +12,15 @@ import { OrderByDatePipe } from './courses-list/courses-list/order-by-date.pipe'
 import { SearchFilterPipe } from './courses-list/courses-list/search-filter.pipe';
 import { ColorBorderDirective } from './courses-list/courses-list-item/color-border.directive';
 
+import { SharedModule } from '../shared/shared.module';
+
 @NgModule({
   declarations: [ToolboxComponent, CoursesListComponent, CoursesListItemComponent,
     LoadMoreComponent, ColorBorderDirective, DurationPipe, OrderByDatePipe, SearchFilterPipe],
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   exports: [ToolboxComponent, CoursesListComponent, CoursesListItemComponent,
     LoadMoreComponent, ColorBorderDirective, DurationPipe, OrderByDatePipe, SearchFilterPipe]

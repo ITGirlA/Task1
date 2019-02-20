@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/courses-page/auth.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user/user';
+
 
 @Component({
   selector: 'app-user-login',
@@ -7,11 +9,20 @@ import { AuthService } from 'src/app/courses-page/auth.service';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
-  public userLogin: string;
-  constructor(private dataService: AuthService) { }
+  @Input() userLogin: string;
+  public userInfo: User;
+
+
+  constructor(private authService: AuthService) {
+    authService.getUserInfo().subscribe(login => this.userInfo = login);
+    if (this.userInfo !== undefined) {
+      this.userLogin = this.userInfo.email;
+    }
+  }
+
+
 
   ngOnInit() {
-    this.userLogin = this.dataService.getUserInfo();
   }
 
 }

@@ -1,3 +1,5 @@
+<app-header></app-header>
+<app-breadcrumbs></app-breadcrumbs>
 <div class = 'add-course'>
   <div class = 'info-block'>
     <label for="title">Title:</label>
@@ -10,13 +12,11 @@
   </div>
 
   <div class = 'info-blocke'>
-    <app-creation-date [ngModel] = "courseItem.creationDate | date: 'yyyy-MM-dd'"
-      (ngModelChange)="courseItem.creationDate=$event"></app-creation-date>
-    
+    <app-creation-date [creationDate] = "courseItem.creationDate" ></app-creation-date>
   </div>
 
   <div class = 'info-block one-line'>
-    <app-duration [(ngModel)] = "courseItem.duration"></app-duration>
+    <app-duration [courseDuration] = "courseItem.duration" ></app-duration>
   </div>
 
   <div class = 'info-block'>

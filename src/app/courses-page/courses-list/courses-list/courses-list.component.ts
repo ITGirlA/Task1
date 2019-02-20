@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { CoursesDataService } from '../../courses-data.service';
-import { CoursesListItem } from '../course/course';
+import { CoursesListItem } from 'src/app/models/course/course';
 
 @Component({
   selector: 'app-courses-list',

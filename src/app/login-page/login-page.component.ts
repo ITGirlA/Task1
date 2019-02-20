@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../user/user';
-import { AuthService } from '../courses-page/auth.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { User } from '../models/user/user';
 
 @Component({
   selector: 'app-login-page',

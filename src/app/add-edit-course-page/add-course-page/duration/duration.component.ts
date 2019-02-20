@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CoursesListItem } from 'src/app/courses-page/courses-list/course/course';
 
 @Component({
   selector: 'app-duration',

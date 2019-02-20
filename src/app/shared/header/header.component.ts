@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
-import { User } from 'src/app/user/user';
-import { AuthService } from 'src/app/courses-page/auth.service';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user/user';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-header',
@@ -9,15 +9,27 @@ import { AuthService } from 'src/app/courses-page/auth.service';
   styleUrls: ['./header.component.css'],
   providers: [AuthService]
 })
-export class HeaderComponent implements OnInit {
-  public userInfo: User;
-  constructor(private dataService: AuthService) { }
 
-  ngOnInit() {
-    // this.userInfo = this.dataService.getUserInfo();
+export class HeaderComponent implements OnInit, OnChanges {
+  public userInfo: User;
+  userLogin: string;
+
+  constructor(private authService: AuthService) {
+    authService.getUserInfo().subscribe(login => this.userInfo = login);
+    if (this.userInfo !== undefined) {
+      this.userLogin = this.userInfo.email;
+    }
   }
 
-  onLogOff(isAuth: boolean) {
-    this.dataService.logout();
+  ngOnInit() {
+
+  }
+
+  onLogOff() {
+    this.userLogin = '';
+  }
+
+  ngOnChanges() {
+
   }
 }

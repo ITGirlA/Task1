@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { CoursesListItem } from '../course/course';
 import { Router } from '@angular/router';
+import { CoursesListItem } from 'src/app/models/course/course';
 
 @Component({
   selector: 'app-courses-list-item',

@@ -1,2 +1,3 @@
 <label for="creation-date">Date:</label><br>
-<input type="date" id="creation-date" [ngModel]="creationDate">
+<input type="date" id="creation-date" [ngModel] = "creationDate | date: 'yyyy-MM-dd'"
+(ngModelChange)="creationDate=$event" >

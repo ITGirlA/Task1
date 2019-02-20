@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CoursesListItem } from './courses-list/course/course';
+import { CoursesListItem } from '../models/course/course';
 
 @Injectable({
   providedIn: 'root'
@@ -55,8 +55,8 @@ export class CoursesDataService {
     return this.data;
   }
 
-  addItem(id: number, title: string, creationDate: Date, duration: number, description: string, topRated: boolean) {
-    this.data.push(new CoursesListItem(id, title, creationDate, duration, description, topRated));
+  addItem(course: CoursesListItem) {
+    this.data.push(course);
   }
 
   getItemById(id: number): CoursesListItem {
