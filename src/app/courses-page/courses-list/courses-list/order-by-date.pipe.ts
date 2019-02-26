@@ -8,15 +8,17 @@ import { CoursesListItem } from 'src/app/models/course/course';
 export class OrderByDatePipe implements PipeTransform {
 
   transform(items: CoursesListItem[], field: string): CoursesListItem[] {
-    items.sort((a: any, b: any) => {
-      if (a[field] < b[field]) {
-        return -1;
-      } else if (a[field] > b[field]) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
+    if (items) {
+      items.sort((a: any, b: any) => {
+        if (a[field] < b[field]) {
+          return -1;
+        } else if (a[field] > b[field]) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+    }
     return items;
   }
 }

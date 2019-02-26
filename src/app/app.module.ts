@@ -19,6 +19,10 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 
 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,15 +34,17 @@ import { routes } from './app.routes';
     DurationComponent,
     AuthorsComponent,
     ButtonsBlockComponent,
-    NoContentComponent,
+    NoContentComponent
   ],
   imports: [
     BrowserModule,
     CoursesPageModule,
     SharedModule,
     RouterModule.forRoot(routes, { useHash: true }),
-    FormsModule
+    FormsModule,
+    HttpClientModule
    ],
+   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
    exports: [AddCoursePageComponent,
     CreationDateComponent,
     DurationComponent,

@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { CoursesListItem } from '../models/course/course';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+const BASE_URL = 'http://localhost:3004/courses';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesDataService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   private data: CoursesListItem[] = [
       {
@@ -51,13 +55,28 @@ export class CoursesDataService {
       }
   ];
 
-  getItems(): CoursesListItem[] {
-    return this.data;
+  getItems(): Observable<CoursesListItem[]> {
+    return this.http.get<CoursesListItem[]>(`${BASE_URL}`);
+  }
+  /*
+  getItemsWithParams(start: string, count: string): Observable<CoursesListItem[]> {
+    return this.http.get<CoursesListItem[]>(`${BASE_URL}`, {params: {start, count} } );
+  }
+  */
+
+  getItemsWithParams(textFragment: string, start: string, count: string, ): Observable<CoursesListItem[]> {
+    return this.http.get<CoursesListItem[]>(`${BASE_URL}`, {params: {textFragment, start, count} } );
   }
 
   addItem(course: CoursesListItem) {
     this.data.push(course);
   }
+
+  /*
+  addItem (id, name, description, isTopRated, date, authors, length): Observable<CoursesListItem> {
+    return this.http.post<CoursesListItem>(`${BASE_URL}/new`, { course });
+  }
+  */
 
   getItemById(id: number): CoursesListItem {
     return this.data.find(x => x.id === id);
@@ -69,8 +88,9 @@ export class CoursesDataService {
     this.data[index] = newItem;
   }
 
-  removeItem(deleteItem: CoursesListItem) {
-    const index = this.data.indexOf(deleteItem);
-    this.data.splice(index, 1);
+  removeItem(id: number) {
+    // const index = this.data.indexOf(deleteItem);
+    // this.data.splice(index, 1);
+    return this.http.delete<CoursesListItem>(`${BASE_URL}/${id}`);
   }
 }

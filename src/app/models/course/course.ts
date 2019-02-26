@@ -12,9 +12,11 @@ export class CoursesListItem implements ICoursesListItem  {
                 topRated: boolean) {
         this.id = id;
         this.title = title;
-        this.creationDate = creationDate;
-        this.duration = duration;
+
         this.description = description;
         this.topRated = topRated;
+        this.creationDate = creationDate;
+        // this.authors = authors[];
+        this.duration = duration;
      }
  }

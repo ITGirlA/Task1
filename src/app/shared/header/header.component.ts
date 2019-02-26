@@ -14,10 +14,8 @@ export class HeaderComponent implements OnInit, OnChanges {
   userLogin: string;
 
   constructor(private authService: AuthService) {
-    authService.getUserInfo().subscribe(login => this.userInfo = login);
-    if (this.userInfo !== undefined) {
-      this.userLogin = this.userInfo.email;
-    }
+    authService.getUserInfo().subscribe((user: User)  =>
+      this.userLogin = user.login );
   }
 
   ngOnInit() {

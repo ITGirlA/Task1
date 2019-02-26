@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../models/user/user';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login-page',
@@ -20,13 +21,14 @@ export class LoginPageComponent implements OnInit {
   }
 
   login() {
-    this.isAuth = this.authService.login(this.user.email, this.user.password);
-
-    if (!this.isAuth) {
-      window.alert('wrong data');
-    } else {
-      this.router.navigateByUrl('');
-    }
+    this.authService.login(this.user.login, this.user.password)
+    .pipe(first())
+            .subscribe(
+                data => {
+                    this.router.navigateByUrl('');
+                },
+                error => {
+                    window.alert('wrong data');
+                });
   }
-
 }

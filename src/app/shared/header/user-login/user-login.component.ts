@@ -1,7 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/models/user/user';
-
 
 @Component({
   selector: 'app-user-login',
@@ -10,18 +7,8 @@ import { User } from 'src/app/models/user/user';
 })
 export class UserLoginComponent implements OnInit {
   @Input() userLogin: string;
-  public userInfo: User;
 
-
-  constructor(private authService: AuthService) {
-    authService.getUserInfo().subscribe(login => this.userInfo = login);
-    if (this.userInfo !== undefined) {
-      this.userLogin = this.userInfo.email;
-    }
-  }
-
-
-
+  constructor() {}
   ngOnInit() {
   }
 

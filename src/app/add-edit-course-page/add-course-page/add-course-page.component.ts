@@ -19,7 +19,7 @@ export class AddCoursePageComponent implements OnInit {
 
   ngOnInit() {
     if (this.isAddPage()) {
-      this.courseItem = new CoursesListItem (10, '', new Date(), 0, '', false);
+      this.courseItem = new CoursesListItem (0, '', new Date(), 0, '', false);
     } else {
       const course = this.coursesDataService.getItemById(this.id);
       if (course === undefined) {

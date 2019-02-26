@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-load-more',
@@ -7,13 +7,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoadMoreComponent implements OnInit {
-
+  @Output() loaded = new  EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
   loadMore() {
-    console.log('Load more');
+    this.loaded.emit();
   }
 }

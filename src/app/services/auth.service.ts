@@ -1,52 +1,49 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { User } from '../models/user/user';
 import { Observable , of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
+  private authUrl = 'http://localhost:3004/auth';
   @Output() getLoggedInName: EventEmitter<string> = new EventEmitter();
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  private data: User[] = [
-    {
-      id: 1,
-      firstName: 'John',
-      lastName: 'Snow',
-      email: 'John_Snow@epam.com',
-      password: 'Know nothing'
-    },
-    {
-      id: 2,
-      firstName: 'Hodor',
-      lastName: 'Hodor',
-      email: 'Hodor',
-      password: 'Hodor'
-    }
-  ];
+  private user: User[] = [];
 
-  login(email: string, password: string): boolean {
-    const userInfo = this.data.find(x => x.email === email && x.password === password);
-    localStorage.setItem('user-email', userInfo.email);
-    this.getLoggedInName.emit(userInfo.email);
-    return userInfo !== null;
+  login(login: string, password: string) {
+    return this.http.post<any>(`${this.authUrl}/login`, { login, password })
+          .pipe(map(data => {
+              if (data && data.token) {
+                this.user = data;
+                localStorage.setItem('token', data.token);
+              }
+          }));
   }
 
   logout() {
-    localStorage.removeItem('user-email');
+    localStorage.removeItem('token');
     this.getLoggedInName.emit('');
   }
 
-  isAuthenticated(): boolean {
-    const userInfo = localStorage.getItem('user-email');
-    return userInfo !== null;
+  getToken(): string {
+    return localStorage.getItem('token');
   }
 
-  getUserInfo (): Observable<User> {
-    return of(this.data.find(x => x.email === localStorage.getItem('user-email')));
+  isAuthenticated(): boolean {
+    const token = this.getToken();
+    // return tokenNotExpired(token);
+    return token !== null;
+  }
+
+  getUserInfo(): Observable<User> {
+    const url = this.authUrl + '/userInfo';
+    return this.http.post<User>(url, {});
   }
 
 }

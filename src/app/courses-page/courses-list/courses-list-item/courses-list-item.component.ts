@@ -18,6 +18,7 @@ export class CoursesListItemComponent implements OnInit, OnDestroy {
   constructor(private router: Router) { }
 
   ngOnInit() {
+
   }
 
   deleteItem(item: CoursesListItem) {
