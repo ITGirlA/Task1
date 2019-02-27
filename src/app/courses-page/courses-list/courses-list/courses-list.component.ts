@@ -3,7 +3,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
 import { CoursesDataService } from '../../courses-data.service';
 import { CoursesListItem } from 'src/app/models/course/course';
 import { map, catchError } from 'rxjs/operators';
-import { Observable, of, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -23,7 +23,7 @@ export class CoursesListComponent implements OnInit {
   public start: number = 0;
   public textToSearch: string = '';
 
-  constructor(private searchFilter: SearchFilterPipe, private coursesDataService: CoursesDataService) { }
+  constructor( private coursesDataService: CoursesDataService) { }
 
   ngOnInit() {
     this.init();
@@ -55,7 +55,9 @@ export class CoursesListComponent implements OnInit {
       console.log('The item with id --' + item.id + '-- is deleted');
       this.coursesDataService.removeItem(item.id).subscribe(() => {
         this.init();
-      });
+      },
+        (error: HttpErrorResponse) => console.log(error)
+      );
       this.checkCoursesCount();
     }
   }
@@ -66,9 +68,7 @@ export class CoursesListComponent implements OnInit {
 
   onSearched(text: string) {
       this.textToSearch = text;
-      // this.coursesItems = this.searchFilter.transform(this.coursesItemsNoFilter, text);
       this.init(text);
-
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -79,8 +79,8 @@ export class CoursesListComponent implements OnInit {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
       console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+        'Backend returned code ' + error.status +
+        ', body was: ' + error.error);
     }
     // return an observable with a user-facing error message
     return throwError(

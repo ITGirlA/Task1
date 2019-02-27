@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CoursesDataService } from 'src/app/courses-page/courses-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesListItem } from 'src/app/models/course/course';
-
+import { Observable } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-course-page',
@@ -18,20 +19,23 @@ export class AddCoursePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.isAddPage()) {
-      this.courseItem = new CoursesListItem (0, '', new Date(), 0, '', false);
-    } else {
-      const course = this.coursesDataService.getItemById(this.id);
-      if (course === undefined) {
-        this.goTo404Page();
-      }
-      this.courseItem = course;
+    this.courseItem = new CoursesListItem (0, '', new Date(), 0, '', false);
+    if (!this.isAddPage()) {
+      this.editCourse();
     }
+  }
 
+  editCourse() {
+    this.coursesDataService.getItemById(this.id).subscribe( course  => {
+        this.courseItem =  new CoursesListItem (course.id, course.name, course.date, course.length,
+         course.description, course.isTopRated);
+    },
+    (error: HttpErrorResponse) => console.log(error)
+    );
   }
 
   isAddPage(): boolean {
-    let addPage: boolean = true;
+    let addPage = true;
     this.route.params.subscribe((data) => {
       this.id = Number(data['id']);
       addPage = data['id'] === 'new';
@@ -45,7 +49,16 @@ export class AddCoursePageComponent implements OnInit {
 
   onSave() {
     if (this.isAddPage()) {
-      this.coursesDataService.addItem(this.courseItem);
+      this.coursesDataService.addItem(this.courseItem)
+      .subscribe
+        ( data => {
+            return true;
+          },
+          error => {
+            console.error('Error adding !');
+            return Observable.throw(error);
+          }
+        );
     } else {
       this.coursesDataService.updateItem(this.courseItem);
     }
@@ -56,5 +69,4 @@ export class AddCoursePageComponent implements OnInit {
     this.courseItem = null;
     this.router.navigateByUrl('');
   }
-
 }
