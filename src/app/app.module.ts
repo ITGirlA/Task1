@@ -21,6 +21,8 @@ import { routes } from './app.routes';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
+import { LoadingScreenInterceptor } from './loading-screen/loading-screen.interceptor';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { AuthInterceptor } from './auth.interceptor';
     DurationComponent,
     AuthorsComponent,
     ButtonsBlockComponent,
-    NoContentComponent
+    NoContentComponent,
+    LoadingScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { AuthInterceptor } from './auth.interceptor';
     FormsModule,
     HttpClientModule
    ],
-   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingScreenInterceptor, multi: true}],
    exports: [AddCoursePageComponent,
     CreationDateComponent,
     DurationComponent,

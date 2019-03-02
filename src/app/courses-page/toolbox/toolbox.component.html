@@ -1,7 +1,7 @@
 <div class="toolbox">
 <div class="search-tools">
-    <input [(ngModel)]="searchText" class="toolbox-input" (keyup.enter)="onSearch(searchText)" >
-    <button class="search" (click)="onSearch(searchText)">Search</button>
+    <input [(ngModel)]="searchText" class="toolbox-input" (keyup)="onSearch(searchText)" >
+    
 </div>
 <div class="add-course">
     <button (click)="onAdd()">Add course</button>

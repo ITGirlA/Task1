@@ -10,7 +10,9 @@
         NO DATA, FEEL FREE TO ADD NEW COURSE
     </div>
     
-    <app-load-more *ngIf = '!noCoursesItems' (loaded)="onLoad($event)"></app-load-more>
+    <div *ngIf = '!noCoursesItems' >
+      <app-load-more></app-load-more>
+    </div>
   </div>
 </div>
 

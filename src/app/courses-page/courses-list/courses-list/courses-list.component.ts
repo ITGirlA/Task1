@@ -2,8 +2,8 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { CoursesDataService } from '../../courses-data.service';
 import { CoursesListItem } from 'src/app/models/course/course';
-import { map, catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { map, catchError, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { throwError, Observable, Subject, of } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -15,30 +15,45 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 export class CoursesListComponent implements OnInit {
   public coursesItems: CoursesListItem[];
-  public coursesItemsNoFilter: CoursesListItem[];
   noCoursesItems = true;
+  public pageNumber = 1;
+  public countToLoad = 5;
+  public start = 0;
+  public textToSearch = '';
 
-  public pageNumber: number = 1;
-  public countToLoad: number = 5;
-  public start: number = 0;
-  public textToSearch: string = '';
 
-  constructor( private coursesDataService: CoursesDataService) { }
+  coursesItems$: Observable<CoursesListItem[]>;
+  private searchTerms = new Subject<string>();
+
+  constructor( private coursesDataService: CoursesDataService) {  }
 
   ngOnInit() {
-    this.init();
+     this.coursesItems$ = this.searchTerms.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap((term: string) => term.length > 2
+      ? this.getObservableData(term)
+      : this.getObservableData())
+    );
+
+    this.subscribeData();
+    this.searchTerms.next('');
   }
 
-  init(textFragment = '') {
-    this.coursesDataService.getItemsWithParams(textFragment, this.start.toString(), this.countToLoad.toString())
-      .pipe(map(data => {
-        return data.map(function(course: any) {
-            return {id: course.id, title: course.name, description: course.description,
-                    topRated: course.isTopRated, creationDate: course.date, duration: course.length };
-          });
-      }),
-      catchError(this.handleError)
-      ).subscribe( (res: CoursesListItem[]) => {
+  getObservableData(textFragment = ''): Observable<CoursesListItem[]> {
+    return  this.coursesDataService.getItemsWithParams(textFragment, this.start.toString(), this.countToLoad.toString())
+    .pipe(map(data => {
+      return data.map(function(course: any) {
+          return {id: course.id, title: course.name, description: course.description,
+                  topRated: course.isTopRated, creationDate: course.date, duration: course.length };
+        });
+    }),
+    catchError(this.handleError)
+    );
+  }
+
+  subscribeData() {
+    this.coursesItems$.subscribe( (res: CoursesListItem[]) => {
         this.coursesItems = res;
         this.checkCoursesCount();
       });
@@ -47,14 +62,16 @@ export class CoursesListComponent implements OnInit {
   onLoad() {
     this.pageNumber++;
     this.start = this.start + this.countToLoad;
-    this.init(this.textToSearch);
+    this.coursesItems$ = this.getObservableData(this.textToSearch);
+    this.subscribeData();
   }
 
   onDelete(item: CoursesListItem) {
     if (window.confirm('(Do you really want to delete this course?')) {
       console.log('The item with id --' + item.id + '-- is deleted');
       this.coursesDataService.removeItem(item.id).subscribe(() => {
-        this.init();
+        this.coursesItems$ = this.getObservableData(this.textToSearch);
+        // this.subscribeData();
       },
         (error: HttpErrorResponse) => console.log(error)
       );
@@ -68,7 +85,8 @@ export class CoursesListComponent implements OnInit {
 
   onSearched(text: string) {
       this.textToSearch = text;
-      this.init(text);
+      this.searchTerms.next(text);
+      this.subscribeData();
   }
 
   private handleError(error: HttpErrorResponse) {
