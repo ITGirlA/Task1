@@ -71,7 +71,7 @@ export class CoursesListComponent implements OnInit {
       console.log('The item with id --' + item.id + '-- is deleted');
       this.coursesDataService.removeItem(item.id).subscribe(() => {
         this.coursesItems$ = this.getObservableData(this.textToSearch);
-        // this.subscribeData();
+        this.subscribeData();
       },
         (error: HttpErrorResponse) => console.log(error)
       );
