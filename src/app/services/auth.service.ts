@@ -24,32 +24,33 @@ export class AuthService {
               if (data && data.token) {
                 this.user = data;
                 this.updateState({action: ACTION_LOGIN, payload : data.token});
-                // localStorage.setItem('token', data.token);
+                localStorage.setItem('token', data.token);
               }
           }));
   }
 
   logout() {
     this.updateState({action: ACTION_LOGOUT});
-    // localStorage.removeItem('token');
+    localStorage.removeItem('token');
     this.getLoggedInName.emit('');
   }
 
   getToken(): string {
-    let token = '';
+    /*let token = '';
     this.getState().subscribe(state => {
       token = state.token;
     });
-    return token;
-    // return localStorage.getItem('token');
+    return token;*/
+    return localStorage.getItem('token');
   }
 
   isAuthenticated(): boolean {
-    let isAuth = false;
+    /*let isAuth = false;
     this.getState().subscribe(state => {
       isAuth = state.login;
     });
-    return isAuth;
+    return isAuth;*/
+    return localStorage.getItem('token') !== null;
   }
 
   getUserInfo(): Observable<User> {

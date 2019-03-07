@@ -22,7 +22,6 @@ import { LoadingScreenInterceptor } from './loading-screen/loading-screen.interc
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/reducers';
 
-
 @NgModule({
   declarations: [
     AppComponent,

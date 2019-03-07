@@ -1,3 +1,4 @@
+
 <app-header></app-header>
 <app-breadcrumbs></app-breadcrumbs>
 <div class = 'add-course'>
@@ -12,8 +13,14 @@
   </div>
 
   <div class = 'info-blocke'>
-    <app-creation-date [creationDate] = "courseItem.creationDate" ></app-creation-date>
+      <form #form="ngForm">
+        <app-creation-date  [(ngModel)] = "courseItem.creationDate" name="creationDate"></app-creation-date>
+      </form>
+      <p>form is valid: {{ form.valid ? 'true' : 'false' }}</p>
   </div>
+
+    
+    
 
   <div class = 'info-block one-line'>
     <app-duration [courseDuration] = "courseItem.duration" ></app-duration>
