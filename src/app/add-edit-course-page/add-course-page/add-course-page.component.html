@@ -1,38 +1,57 @@
-
 <app-header></app-header>
 <app-breadcrumbs></app-breadcrumbs>
-<div class = 'add-course'>
-  <div class = 'info-block'>
-    <label for="title">Title:</label>
-    <input type="text" id ="title" [(ngModel)]="courseItem.title">
+
+<form #addform="ngForm" ngNativeValidate>
+  <div class = 'add-course'>
+    <div class = 'info-block'>
+      <div class="one-line">
+        <label for="title" class = "lable-style">Title:</label>       
+        <div *ngIf="titleModel.invalid && (titleModel.dirty || titleModel.touched)"  class="alert-style">
+            <div *ngIf="titleModel.errors.required">Title is required</div>
+        </div>
+      </div>
+      <input type="text" id ="title" [(ngModel)]="courseItem.title" name="title" #titleModel="ngModel" required>
+    </div>
+
+    <div class = 'info-block'>
+      <div class="one-line">
+        <label class = "lable-style">Description:</label>
+        <div *ngIf="descriptionModel.invalid && (descriptionModel.dirty || descriptionModel.touched)" class="alert-style">
+            <div *ngIf="descriptionModel.errors.required">Description is required</div>
+        </div>
+      </div>
+      <textarea type="text" [(ngModel)]="courseItem.description" cols="100" rows="5" name="description"  #descriptionModel="ngModel" required></textarea>
+    </div>
+
+    <div class = 'info-block'>
+      <div class="one-line">
+        <label for="creation-date" class = "lable-style">Date:</label>
+        <div *ngIf="creatinDateModel.invalid && (creatinDateModel.dirty || creatinDateModel.touched)" class="alert-style">
+          <div *ngIf="creatinDateModel.errors.checkdateformat">
+              {{creationDate.message}}
+          </div>
+        </div>
+      </div>
+      <app-creation-date  [(ngModel)] = "courseItem.creationDate" name="creationDate" #creatinDateModel="ngModel" #creationDate></app-creation-date>
+    </div>
+
+    <div class = 'info-block one-line'>
+      <label for="duration" class = "lable-style">Duration:</label>
+      <div *ngIf="durationModel.invalid && (durationModel.dirty || durationModel.touched)" class="alert-style">
+        <div *ngIf="durationModel.errors.checkifnumber">
+          {{duration.message}}
+        </div>
+      </div>
+      <app-duration [(ngModel)] = "courseItem.duration"  id = "duration" name="duration"  #durationModel="ngModel" #duration ></app-duration>
+    </div>
+
+    <div class = 'info-block'>
+      <app-authors></app-authors>
+    </div>
+
+    <div class = 'info-block one-line'>
+        <button class="submit" class="tight"  (click)="onSave()" [disabled]="!addform.form.valid">Save</button>
+        <button class="submit" class="tight"  (click)="onCancel()">Cancel</button>
+    </div>
   </div>
-
-  <div class = 'info-block'>
-    <label>Description:</label>
-    <textarea type="text" [(ngModel)]="courseItem.description" cols="100" rows="5"></textarea>
-  </div>
-
-  <div class = 'info-blocke'>
-      <form #form="ngForm">
-        <app-creation-date  [(ngModel)] = "courseItem.creationDate" name="creationDate"></app-creation-date>
-      </form>
-      <p>form is valid: {{ form.valid ? 'true' : 'false' }}</p>
-  </div>
-
-    
-    
-
-  <div class = 'info-block one-line'>
-    <app-duration [courseDuration] = "courseItem.duration" ></app-duration>
-  </div>
-
-  <div class = 'info-block'>
-    <app-authors></app-authors>
-  </div>
-
-  <div class = 'info-block one-line'>
-    <app-buttons-block (save) ="onSave()" (cancel) ="onCancel($event)"></app-buttons-block>
-  </div>
-
-</div>
-
+</form>

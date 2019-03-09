@@ -13,6 +13,37 @@
     margin-right: 18px;
 }
 
-.one-line {
-    display: inline-block; 
+.lable-style {
+    float: left;
+}
+
+.one-line{
+    display: inline-block;
+}
+
+.alert-style {
+    margin-left: 18px;
+    float: left;
+    color: red;
+    font-weight: 600;
+}
+
+textarea, input {
+    border-radius: 4px;
+}
+textarea.ng-touched.ng-valid[required], textarea.ng-touched.ng-valid.required  {
+    border: 2px solid green;
+}
+
+textarea.ng-touched.ng-invalid:not(form)  {
+    border: 2px solid red;
+}
+
+
+input.ng-touched.ng-valid[required], input.ng-touched.ng-valid.required  {
+    border: 2px solid green;
+}
+
+input.ng-touched.ng-invalid:not(form)  {
+    border: 2px solid red;
 }

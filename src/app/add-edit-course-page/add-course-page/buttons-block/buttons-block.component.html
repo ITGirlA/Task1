@@ -1,2 +1,2 @@
-<button class="submit" class="tight"  (click)="saveItem()">Save</button>
+<button class="submit" class="tight"  (click)="saveItem()" [disabled]="!addform.form.valid">Save</button>
 <button class="submit" class="tight"  (click)="cancelItem()">Cancel</button>

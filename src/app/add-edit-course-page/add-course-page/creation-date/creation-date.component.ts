@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, Validator, FormControl } from '@angular/forms';
+import { Component, Input, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, AbstractControl, ValidationErrors, Validator
+} from '@angular/forms';
+
 
 @Component({
   selector: 'app-creation-date',
@@ -17,59 +19,43 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, Validator, Form
   styleUrls: ['./creation-date.component.css']
 })
 
-export class CreationDateComponent implements
-  ControlValueAccessor, Validator {
-    private creationDate: Date;
-    private parseError: boolean;
-    private data: any;
+export class CreationDateComponent implements ControlValueAccessor, Validator {
+  @Input() creationDate: number;
+  private data: any;
+  message: string;
 
-    // this is the initial value set to the component
-    public writeValue(obj: any) {
-        if (obj) {
-            this.data = obj;
-            // this will format it with 4 character spacing
-            this.creationDate = this.data;
-        }
+  public validate(control: AbstractControl): ValidationErrors {
+    let isDateFormat: boolean = false;
+    if (control.value === '') {
+      this. message = 'Date is required';
+    } else {
+      isDateFormat = new RegExp(/^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$/)
+      .test(control.value);
+      if (!isDateFormat) {
+        this. message = 'Use correct date format: dd/MM/yyyy';
+      }
     }
+    return isDateFormat ? null : {'checkdateformat': {value: true}} ;
 
-    // registers 'fn' that will be fired wheb changes are made
-    // this is how we emit the changes back to the form
-    public registerOnChange(fn: any) {
-        this.propagateChange = fn;
-    }
+  }
 
-    // validates the form, returns null when valid else the validation object
-    // in this case we're checking if the json parsing has passed or failed from the onChange method
-    public validate(c: FormControl) {
-        return (!this.parseError) ? null : {
-            jsonParseError: {
-                valid: false,
-            },
-        };
-    }
+  public writeValue(obj: any) {
+      if (obj) {
+          this.data = obj;
+          this.creationDate = this.data;
+      }
+  }
 
-    // not used, used for touch input
-    public registerOnTouched() { }
+  public registerOnChange(fn: any) {
+      this.propagateChange = fn;
+  }
 
-    // change events from the textarea
-    private onChange(event) {
+  public registerOnTouched() { }
 
-        // get value from text area
-        let newValue = event.target.value;
+  private onChange(event) {
+    this.data = event.target.value;
+    this.propagateChange(this.data);
+  }
 
-        try {
-            // parse it to json
-            this.data = JSON.parse(newValue);
-            this.parseError = false;
-        } catch (ex) {
-            // set parse error if it fails
-            this.parseError = true;
-        }
-
-        // update the form
-        this.propagateChange(this.data);
-    }
-
-    // the method set in registerOnChange to emit changes back to the form
-    private propagateChange = (_: any) => { };
+  private propagateChange = (_: any) => { };
 }

@@ -1,5 +1,5 @@
-<label for="duration">Duration:</label>
 <div>
-  <input  class = 'tight' type="text" id ="duration" [(ngModel)]="courseDuration">
+  <input type="text" id ="duration" [ngModel]="courseDuration"  
+  (change)="onChange($event)" (keyup)="onChange($event)">
   <span>{{courseDuration | duration}}</span>
 </div>

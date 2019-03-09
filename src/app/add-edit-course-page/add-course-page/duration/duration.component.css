@@ -2,3 +2,7 @@
     width: 165px;
     margin-right: 18px;
 }
+
+input {
+    border-radius: 4px;
+}

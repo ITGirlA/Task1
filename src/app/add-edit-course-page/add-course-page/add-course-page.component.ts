@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { CoursesDataService } from 'src/app/courses-page/courses-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesListItem } from 'src/app/models/course/course';
@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   selector: 'app-add-course-page',
   templateUrl: './add-course-page.component.html',
   styleUrls: ['./add-course-page.component.css']
+  // encapsulation: ViewEncapsulation.None
 })
 export class AddCoursePageComponent implements OnInit {
   @Input() courseItem: CoursesListItem;
