@@ -1,5 +1,5 @@
 <div>
   <input type="text" id ="duration" [ngModel]="courseDuration"  
-  (change)="onChange($event)" (keyup)="onChange($event)">
+  (change)="onChange($event)"  (blur)="onChange($event)" (keyup)="onChange($event)" required pattern="^[0-9]*$">
   <span>{{courseDuration | duration}}</span>
 </div>

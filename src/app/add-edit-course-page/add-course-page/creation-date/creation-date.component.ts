@@ -35,6 +35,7 @@ export class CreationDateComponent implements ControlValueAccessor, Validator {
         this. message = 'Use correct date format: dd/MM/yyyy';
       }
     }
+
     return isDateFormat ? null : {'checkdateformat': {value: true}} ;
 
   }

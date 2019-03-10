@@ -1,16 +1,22 @@
-<label for="authors">Authors:</label>
-<div>
-  <input type="text" id ="authors" class = "tight">
+<div class="search-component">
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" [ngModel]="searchedAuthorsList" (blur)="onChange()" />
+ 
+  <ul class="search-result">
+    <li *ngFor="let author of authors$ | async" >
+      <button (click)="stick(author); searchBox.value='' ; clearList()">
+        {{author.name}}
+      </button>
+    </li>
+  </ul>
 </div>
-
-<ul class="authors">
-  <li *ngFor="let author of authors"
-    [class.selected]="author === selectedAuthor"
-    (click)="onSelect(author)">
-    <span class="badge">{{author.id}}</span> {{author.name}}
-  </li>
-</ul>
-
-<!-- 
-<app-author-detail [author]="selectedAuthor"></app-author-detail>
--->
+ 
+<div class="search-component">
+  <ul class="searched-authors" >
+    <li *ngFor="let selectedAuthor of selectedAuthors">
+    <span class="badge badge-secondary">{{selectedAuthor.name}}
+      <button class="badge badge-light" title="delete author"
+        (click)="delete(selectedAuthor)">x</button>
+    </span>
+    </li>
+  </ul>
+</div>

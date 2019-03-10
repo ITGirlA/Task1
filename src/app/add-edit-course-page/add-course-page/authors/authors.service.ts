@@ -17,13 +17,14 @@ export class AuthorsService {
     return this.http.get<Author[]>(`${BASE_URL}`);
   }
 
-  getItemsWithParams(textFragment: string): Observable<Author[]> {
+  search(textFragment: string): Observable<Author[]> {
     return this.http.get<Author[]>(`${BASE_URL}`, {params: {textFragment} } );
   }
 
   getItemById(id: number): Observable<any> {
     return this.http.get<any> (`${BASE_URL}/${id}`);
   }
+
 
 
 }

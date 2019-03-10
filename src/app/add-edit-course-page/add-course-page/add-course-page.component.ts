@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CoursesDataService } from 'src/app/courses-page/courses-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoursesListItem } from 'src/app/models/course/course';
@@ -20,7 +20,8 @@ export class AddCoursePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.courseItem = new CoursesListItem (0, '', new Date(), 0, '', false);
+    this.courseItem = new CoursesListItem (0, '', null , 0, '', false);
+
     if (!this.isAddPage()) {
       this.editCourse();
     }

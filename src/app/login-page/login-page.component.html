@@ -1,18 +1,34 @@
-<div class = 'login-block'>
-  <div class = 'login-title'>
-    <p>Login</p>
+<form #loginForm="ngForm" ngNativeValidate>
+  <div class = 'login-block'>
+    <div class = 'login-title'>
+      <p>Login</p>
+    </div>
+    <div class = 'login-body'>
+      <div class = 'info-block'>
+          <div class="one-line">
+          <label for="login" class = "lable-style">Email: *Required</label>
+          <div *ngIf="loginModel.invalid && (loginModel.dirty || loginModel.touched)" class="alert-style">
+            <div *ngIf="loginModel.errors.required">
+              Please fill in your e-mail
+            </div>
+          </div>
+        </div>
+        <input type="text" [(ngModel)]="user.login" name="login" #loginModel="ngModel" class = "lable-style" required>
+      </div>
+      <div class = 'info-block'>
+          <div class="one-line">
+            <label for="password" class = "lable-style">Password: *Required</label>
+            <div *ngIf="passwordModel.invalid && (passwordModel.dirty || passwordModel.touched)" class="alert-style">
+              <div *ngIf="passwordModel.errors.required">
+                Please enter your password
+              </div>
+            </div>
+          </div>
+          <input type="text" [(ngModel)]="user.password" name="password" #passwordModel="ngModel" class = "lable-style" required>
+      </div>
+      <div class = 'info-block'>
+        <button class="submit" (click)="login()" [disabled]="!loginForm.form.valid">Login</button>
+      </div>
+    </div>
   </div>
-  <div class = 'login-body'>
-    <div class = 'info-block'>
-      <p>Email: *Required</p>
-      <input type="text" [(ngModel)]="user.login" >
-    </div>
-    <div class = 'info-block'>
-        <p>Password: *Required</p>
-        <input type="text" [(ngModel)]="user.password">
-    </div>
-    <div class = 'info-block'>
-       <button class="submit" (click)="login()">Login</button>
-    </div>
-  </div>
-</div>
+</form>

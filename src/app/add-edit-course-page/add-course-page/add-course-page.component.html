@@ -42,16 +42,27 @@
           {{duration.message}}
         </div>
       </div>
-      <app-duration [(ngModel)] = "courseItem.duration"  id = "duration" name="duration"  #durationModel="ngModel" #duration ></app-duration>
+      <div >
+        <app-duration [(ngModel)] = "courseItem.duration"  id = "duration" name="duration"  #durationModel="ngModel" #duration ></app-duration>
+      </div>
     </div>
 
     <div class = 'info-block'>
-      <app-authors></app-authors>
+      <div class="one-line">
+        <label for="authors" class = "lable-style">Authors:</label>
+        <div *ngIf="authorsModel.invalid && (authorsModel.dirty || authorsModel.touched)" class="alert-style">
+          <div *ngIf="authorsModel.errors.selected">
+            At least one author should be selected
+          </div>
+        </div>
+      </div>
+      <app-authors [(ngModel)] = "courseItem.authors"  id = "authors" name="authors"  #authorsModel="ngModel" #authors ></app-authors>
     </div>
 
     <div class = 'info-block one-line'>
         <button class="submit" class="tight"  (click)="onSave()" [disabled]="!addform.form.valid">Save</button>
         <button class="submit" class="tight"  (click)="onCancel()">Cancel</button>
     </div>
+
   </div>
 </form>
