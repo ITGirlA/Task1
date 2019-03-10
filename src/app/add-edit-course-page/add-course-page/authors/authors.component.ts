@@ -49,7 +49,7 @@ export class AuthorsComponent implements OnInit, ControlValueAccessor, Validator
 
   public registerOnTouched() { }
 
-  private onChange() {
+  public onChange() {
     this.propagateChange(this.selectedAuthors);
   }
 

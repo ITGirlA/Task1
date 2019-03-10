@@ -67,7 +67,7 @@ export class AddCoursePageComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
-  onCancel(cancel: boolean) {
+  onCancel() {
     this.courseItem = null;
     this.router.navigateByUrl('');
   }

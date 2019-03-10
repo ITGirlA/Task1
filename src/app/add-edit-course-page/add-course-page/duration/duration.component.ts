@@ -43,7 +43,7 @@ export class DurationComponent implements ControlValueAccessor, Validator {
 
   public registerOnTouched() { }
 
-  private onChange(event) {
+  public onChange(event) {
     this.data = event.target.value;
     this.propagateChange(this.data);
   }
